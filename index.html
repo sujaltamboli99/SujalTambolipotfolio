@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My potfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <!-- <h1 class="mainh1">SUJAL</h1> -->
+        <nav>
+            <div class="navbar_links">
+
+                <UL>
+                    <h1 class="mainh1">SUJAL</h1>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="aboutus1.html">About</a></li>
+                    <li><a href="My Work.html">MyWork</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                </UL>
+
+            </div>
+        </nav>
+    </header>
+
+
+
+    <div class="main_content">
+        <h2 style="   color: #cc005f; "  class="hello_heading">Hello, World.</h2>
+        <!-- <h1 class="name">I'm Sujal Tamboli.</h1> -->
+        <h1 class="name">I'm <span id="changingName">Sujal Tamboli</span>.</h1>
+
+        <h2 class="proffestion"> !&nbsp; Front-end Developer &nbsp;!</h2>
+    </div>
+
+
+    <div class="button_box">
+        <h3 class="about_button"> More About Me </h3>&nbsp;&nbsp;
+        <a href="aboutus1.html"><i class="fa-solid fa-chevron-right"></i></a>
+
+        <!-- <a href="aboutus.html"><h3 class="about_button"> More About Me </h3> <i class="fa-solid fa-chevron-right"></i></a>   -->
+        <!--         
+        <i class="fa-solid fa-chevron-right"></i> -->
+    </div>
+
+    <footer>
+        <div class="social_icons">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-linkedin-in"></i>
+        </div>
+    </footer>
+
+    <script>
+        const names = ["Sujal Tamboli", "a Front-end Developer", "a Coder", "a Programmer", "a Tech Enthusiast"];
+        let index = 0; // Current word index
+        let charIndex = 0; // Character index
+        let isDeleting = false; // State: typing or deleting
+
+        const nameElement = document.getElementById("changingName");
+
+        function typeEffect() {
+            let currentName = names[index];
+
+            if (isDeleting) {
+                // Deleting characters
+                nameElement.textContent = currentName.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Typing characters
+                nameElement.textContent = currentName.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let speed = isDeleting ? 100 : 150; // Adjust speed for deleting vs typing
+
+            if (!isDeleting && charIndex === currentName.length) {
+                // Pause before starting to delete
+                isDeleting = true;
+                speed = 1000;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to the next word after deleting
+                isDeleting = false;
+                index = (index + 1) % names.length; // Loop through words
+                speed = 300;
+            }
+
+            setTimeout(typeEffect, speed);
+        }
+
+        typeEffect(); // Start the typing effect
+
+    </script>
+
+
+
+</body>
+
+</html>
